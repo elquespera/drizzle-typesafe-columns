@@ -4,8 +4,25 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "tsx src/index.ts",
+    "build": "tsc",
+    "dev": "nodemon src/index.ts",
+    "db:studio": "drizzle-kit studio",
+    "migrations:generate": "drizzle-kit generate:sqlite",
+    "migrations:push": "drizzle-kit push:sqlite",
+    "migrations:drop": "drizzle-kit drop",
+    "migrations:run": "drizzle-kit generate:sqlite & drizzle-kit push:sqlite"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "drizzle-kit": "^0.20.13",
+    "nodemon": "^3.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.4.2",
+    "drizzle-orm": "^0.29.3"
+  }
 }
