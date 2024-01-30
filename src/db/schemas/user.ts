@@ -1,6 +1,5 @@
-import { sql } from "drizzle-orm";
+import { getTableColumns, sql } from "drizzle-orm";
 import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
-import { omitFromObject } from "../../lib/extract-from-object";
 
 export const users = sqliteTable("user", {
   id: text("id").primaryKey(),
@@ -12,11 +11,5 @@ export const users = sqliteTable("user", {
     .notNull(),
 });
 
-export const userColumns = omitFromObject(users, [
-  "$inferInsert",
-  "$inferSelect",
-  "_",
-  "getSQL",
-]);
-
-export type SpeciesColumns = typeof userColumns;
+export const userColumns = getTableColumns(users);
+export type UserColumns = typeof userColumns;

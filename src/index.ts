@@ -1,8 +1,7 @@
-import { db } from "./db/db";
-import { users } from "./db/schemas/user";
+import { getUsers } from "./db/get-users";
 
 async function printUsers() {
-  const result = await db.select().from(users);
+  const result = await getUsers(["id", "createdAt"]);
   console.log(result);
 }
 
